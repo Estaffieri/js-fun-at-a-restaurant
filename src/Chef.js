@@ -11,16 +11,17 @@ class Chef {
       }
   }
   checkForFood(foodItem) {
-    // var allMenuList = Object.keys(this.restaurant.menus)
-    // for (var i = 0; i < allMenuList.length; i++)
-    //   var completeMenu = allMenuList[i];
-      if (!this.menus[foodItem]) {
-      return `Sorry, we aren't serving ${foodItem.name} today.`
-    } else {
+    var foodItemCheck = this.restaurant.menus[foodItem.type].find(function(breakfastItem) {
+      return breakfastItem.name === foodItem.name
+    })
+    if (foodItemCheck !== undefined) {
       return `Yes, we're serving ${foodItem.name} today!`
+    } else {
+      return `Sorry, we aren't serving ${foodItem.name} today.`
     }
   }
 }
+
 
 
 
